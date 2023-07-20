@@ -1,0 +1,14 @@
+[
+    {
+        "description": "Weight calculated using the authors' equations"
+    },
+    {
+        "description": "Weight calculated using the square-cube law, based on the reference"
+    },
+    {
+        "description": "Difference (1) minus (2) = allometric effect"
+    },
+    {
+        "description": "Allometric addition to (2)"
+    }
+]

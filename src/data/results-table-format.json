@@ -1,0 +1,22 @@
+[
+    {
+        "units": "kg",
+        "addPlus": "false",
+        "roundToDigits": 0
+    },
+    {
+        "units": "kg",
+        "addPlus": "false",
+        "roundToDigits": 0
+    },
+    {
+        "units": "kg",
+        "addPlus": "true",
+        "roundToDigits": 0
+    },
+    {
+        "units": "kg",
+        "addPlus": "true",
+        "roundToDigits": 1
+    }
+]

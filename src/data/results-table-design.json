@@ -1,0 +1,48 @@
+[
+    {
+        "columnTitle": "Length [m]",
+        "columnTitleColor": "111111",
+        "columnColor": "111111"
+    },
+    {
+        "columnTitle": "MacClain et al.",
+        "columnTitleColor": "333333",
+        "columnColor": "500505"
+    },
+    {
+        "columnTitle": "Gottfried et al.",
+        "columnTitleColor": "333333",
+        "columnColor": "553000"
+    },
+    {
+        "columnTitle": "Kohler et al.",
+        "columnTitleColor": "333333",
+        "columnColor": "204505"
+    },
+    {
+        "columnTitle": "Tricas & McCosker",
+        "columnTitleColor": "333333",
+        "columnColor": "003842"
+    },
+    {
+        "columnTitle": "Mollet & Cailliet",
+        "columnTitleColor": "333333",
+        "columnColor": "002060"
+    },
+    {
+        "columnTitle": "Casey & Pratt",
+        "columnTitleColor": "333333",
+        "columnColor": "400540",
+        "units": "kg",
+        "addPlus": "false",
+        "roundToDigits": 0
+    },
+    {
+        "columnTitle": "Average",
+        "columnTitleColor": "111111",
+        "columnColor": "111111",
+        "units": "kg",
+        "addPlus": "false",
+        "roundToDigits": 0
+    }
+]
