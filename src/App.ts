@@ -14,4 +14,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML =/* html */`
 
 /* attachSharkEvents(); */
 
-PageShark.attachEvents
+PageShark.attachEvents();
