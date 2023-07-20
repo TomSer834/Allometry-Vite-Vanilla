@@ -21,4 +21,6 @@ export const legendTable = () => {
 
     tableHtml += "<tbody>";
     tableHtml += "<table>";
+
+    return tableHtml;
 };
