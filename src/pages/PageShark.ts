@@ -1,3 +1,5 @@
+import { legendTable } from "../components/legend-table.ts";
+
 export const PageShark = () => {
     return /*html*/`
 <div class="page pageShark">
@@ -88,11 +90,16 @@ export const attachEvents = () => {
 
     const _Starter = document.getElementById("starter");
     if (_Starter) {
+
         const Starter = _Starter;
+
         Starter.addEventListener("submit", (e) => {
             e.preventDefault();
             console.log("Button was clicked!");
-    
+
+            const lt:string = legendTable();
+
+            console.log(lt);
         })
     } else {
         console.log("Starter is null!");
