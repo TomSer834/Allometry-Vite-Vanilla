@@ -11,6 +11,9 @@ export const legendTable = () => {
 
     for (const rowText of text) {
         tableHtml += `<tr>
+                            <td>${index} + ". Cell entry"</td>
+                      </tr>`;
+        tableHtml += `<tr>
 						    <td>${rowText.description}</td>
 					  </tr>`;
         index++;
