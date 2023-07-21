@@ -97,9 +97,25 @@ export const attachEvents = () => {
             e.preventDefault();
             console.log("Button was clicked!");
 
-            const lt:string = legendTable();
 
-            console.log(lt);
+
+            const text: string = legendTable();
+
+            console.log(text);
+
+
+
+
+
+            const _Table_1 = document.getElementById("data-table");
+            if (_Table_1) {
+                const Table_1 = _Table_1;
+                Table_1.innerHTML = text;
+
+            } else {
+                console.log("Starter is null!");
+            }
+
         })
     } else {
         console.log("Starter is null!");
