@@ -8,7 +8,6 @@ body {
 	background-color: #333;
 	color: #ccc;
 	font-family: sans-serif;
-	padding: 2rem;
 
 	h1 {
 		color: rgb(204, 168, 101);
@@ -62,18 +61,9 @@ body {
 			}
 		}
 	}
-
-	
-
-
 }
 
 
-.main-substitute {
-	display: flex;
-	justify-content: center;
-	font-family: monospace;
-}
 
 .inputField {
 	width: 18rem;
@@ -130,64 +120,64 @@ body {
 	font-size: 1.2rem;
 }
 
-	/* ===== Control panel end===== */
+/* ===== Control panel end===== */
 
-	table {
-		font-family: monospace;
-		font-size: 0.8rem;
-		color: rgb(240, 240, 240);
-		background-color: #69693f;
-		text-align: left;
-		border-radius: 0.3rem;
-		border-collapse: separate;
-	}
+#container {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
 
-	.legend {
-		margin: 1.2rem;
-	}
+table {
+	font-family: monospace;
+	font-size: 0.8rem;
+	color: rgb(240, 240, 240);
+	background-color: #69693f;
+	text-align: left;
+	border-radius: 0.3rem;
+	border-collapse: separate;
+}
 
-	.legend td {
-		padding: 0.2rem 0.8rem 0.2rem 0.8rem;
-	}
+.legend {
+	margin: 1.2rem;
+}
 
-	.legend tr:nth-child(even) {
-		background-color: #7c7c52;
-	}
+.legend tr:nth-child(even) {
+	background-color: #7c7c52;
+}
 
-	.legend tr:nth-child(odd) {
-		background-color: #6e6e3d;
-	}
+.legend tr:nth-child(odd) {
+	background-color: #6e6e3d;
+}
 
-	#legend-table {
-		display: flex;
-		justify-content: center;
-	}
+.legend td {
+	padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+}
 
-	#data-table {
-		display: flex;
-		justify-content: center;
-	}
+#data-div {
+/* comment */
+}
 
-	.data {
-		font-family: monospace;
-		font-size: 0.75rem;
-		color: rgb(230, 230, 230);
-		margin-bottom: 3rem;
-		background-color: #636363;
-		text-align: right;
-	}
+.data {
+	font-family: monospace;
+	font-size: 0.75rem;
+	color: rgb(230, 230, 230);
+	margin-bottom: 3rem;
+	background-color: #636363;
+	text-align: right;
+}
 
-	.data td {
-		padding: 0.3rem;
-		width: 5.25rem;
-		color: rgb(224, 224, 224);
-	}
+.data td {
+	padding: 0.3rem;
+	width: 5.25rem;
+	color: rgb(224, 224, 224);
+}
 
-	.data td:nth-child(1),
-	td:nth-child(8) {
-		background-color: #050505;
-	}
+.data td:nth-child(1),
+td:nth-child(8) {
+	background-color: #050505;
+}
 
-	.data-tr {
-		text-align: center;
-	}
+.data-tr {
+	text-align: center;
+}

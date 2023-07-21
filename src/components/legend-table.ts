@@ -12,11 +12,12 @@ export const legendTable = () => {
 
     for (const rowText of text) {
 
+        index++;
+
         tableHtml += "<tr>" +
-                        "<td>" + index + ". Cell entry</td>" +
+                        "<td>" + index + ". Cell entry:</td>" +
                         "<td>" + rowText.description + "</td>" +
                     "</tr>";
-        index++;
     }
 
     tableHtml += "<tbody>";
