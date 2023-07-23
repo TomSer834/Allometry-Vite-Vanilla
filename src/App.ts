@@ -4,7 +4,7 @@ import * as PageShark from './pages/PageShark';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML =/* html */`
 <header>
-	<h1>Info Site</h1>
+	<h1>THE CRAZY SITE</h1>
 	${getMenu()}
 </header>
 <main>

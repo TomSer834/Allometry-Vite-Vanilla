@@ -6,9 +6,9 @@
         "description": "Weight calculated using the square-cube law, based on the reference"
     },
     {
-        "description": "Difference (1) minus (2) = allometric effect"
+        "description": "Difference (1) minus (2) = allometric effect in kg"
     },
     {
-        "description": "Allometric addition to (2)"
+        "description": "Allometric effect in percent"
     }
 ]
