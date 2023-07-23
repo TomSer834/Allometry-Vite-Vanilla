@@ -7,7 +7,9 @@ export const PageShark = () => {
 
 <div class="background">
 <div class="page-pageShark">
-
+<header class="header-substitute" >
+        <h6>Carcharodon carcharias</h6>
+    </header>
 <div class="main-substitute">
     <div class="inputField">
 

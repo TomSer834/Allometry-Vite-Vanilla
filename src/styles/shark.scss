@@ -1,3 +1,15 @@
+.header-substitute {
+    height: 3.5rem;
+    color: rgb(52, 167, 167);
+    font-size: 2rem;
+    font-style: italic;
+    background-color: rgb(6, 6, 49);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 80%;
+}
+
 .page-pageShark {
     background-image: url("./images/S-03.jpg");
     background-repeat: no-repeat;
@@ -5,7 +17,7 @@
     background-size: cover;
     min-width: 34rem;
     /* max-width: 1280px; */
-    height: 100vh;
+    height:100vh;
 /*     max-height: 800px; */
 }
 
