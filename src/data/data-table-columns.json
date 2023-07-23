@@ -32,17 +32,11 @@
     {
         "columnTitle": "Casey & Pratt",
         "columnTitleColor": "333333",
-        "columnColor": "400540",
-        "units": "kg",
-        "addPlus": "false",
-        "roundToDigits": 0
+        "columnColor": "400540"
     },
     {
         "columnTitle": "Average",
         "columnTitleColor": "111111",
-        "columnColor": "111111",
-        "units": "kg",
-        "addPlus": "false",
-        "roundToDigits": 0
+        "columnColor": "111111"
     }
 ]

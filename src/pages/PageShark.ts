@@ -1,6 +1,7 @@
 import '/src/styles/shark.scss';
 
 import { legendTable } from "../components/legend-table.ts";
+import { dataTable } from "../components/data-table.ts";
 
 export const PageShark = () => {
     return /*html*/`
@@ -85,17 +86,9 @@ export const PageShark = () => {
 
     <div id="legend-div"></div>
 
-    <div id="data-div">
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-        <p>sshhAGGBW</p>
-    </div>
+    <div id="data-div"></div>
 </div>
+
 </div>
 </div>
 
@@ -112,29 +105,102 @@ export const attachEvents = () => {
 
         Starter.addEventListener("submit", (e) => {
             e.preventDefault();
-            console.log("Button was clicked!");
-
-
-
-            const text: string = legendTable();
-
-            console.log(text);
-
-
-
 
 
             const _Table_1 = document.getElementById("legend-div");
             if (_Table_1) {
                 const Table_1 = _Table_1;
-                Table_1.innerHTML = text;
+                Table_1.innerHTML = legendTable();
 
             } else {
                 console.log("Starter is null!");
             }
 
+            /* ======================================================================================================== */
+
+
+
+            const _Table_2 = document.getElementById("data-div");
+            if (_Table_2) {
+                const Table_2 = _Table_2;
+                Table_2.innerHTML = makeDataTable();
+
+            } else {
+                console.log("Starter is null!");
+            }
+
+
         })
     } else {
         console.log("Starter is null!");
     }
+}
+
+
+const makeDataTable = () => {
+
+    /* ======================= input field ======================= */
+
+    let length_reference_meters = 0;
+    const _element_1 = document.getElementById("element_1");
+    if (_element_1) {
+        const element_1 = _element_1;
+        length_reference_meters = parseFloat(element_1.innerText);
+    } else { console.log("Input element 1 does not exist!"); }
+
+    let length_reference_centimeters = 0;
+    const _element_2 = document.getElementById("element_2");
+    if (_element_2) {
+        const element_2 = _element_2;
+        length_reference_meters = parseFloat(element_2.innerText);
+    } else { console.log("Input element 2 does not exist!"); }
+
+    let start_at_meters = 0;
+    const _element_3 = document.getElementById("element_3");
+    if (_element_3) {
+        const element_3 = _element_3;
+        length_reference_meters = parseFloat(element_3.innerText);
+    } else { console.log("Input element 3 does not exist!"); }
+
+    let start_at_centimeters = 0;
+    const _element_4 = document.getElementById("element_4");
+    if (_element_4) {
+        const element_4 = _element_4;
+        length_reference_meters = parseFloat(element_4.innerText);
+    } else { console.log("Input element 4 does not exist!"); }
+
+    let end_at_meters = 0;
+    const _element_5 = document.getElementById("element_5");
+    if (_element_5) {
+        const element_5 = _element_5;
+        length_reference_meters = parseFloat(element_5.innerText);
+    } else { console.log("Input element 5 does not exist!"); }
+
+    let end_at_centimeters = 0;
+    const _element_6 = document.getElementById("element_6");
+    if (_element_6) {
+        const element_6 = _element_6;
+        length_reference_meters = parseFloat(element_6.innerText);
+    } else { console.log("Input element 6 does not exist!"); }
+
+    let step_size_centimeters = 0;
+    const _element_7 = document.getElementById("element_7");
+    if (_element_7) {
+        const element_7 = _element_7;
+        length_reference_meters = parseFloat(element_7.innerText);
+    } else { console.log("Input element 7 does not exist!"); }
+
+
+    const length_reference = length_reference_meters + length_reference_centimeters / 100;
+    const start_at = start_at_meters + start_at_centimeters / 100;
+    let   end_at = end_at_meters + end_at_centimeters / 100;
+    const step_size = step_size_centimeters / 100;
+
+    if (start_at > end_at) end_at = start_at;
+
+
+
+
+    return dataTable(start_at, end_at, step_size, length_reference);
+
 }
