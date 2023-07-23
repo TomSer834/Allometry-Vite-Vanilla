@@ -86,14 +86,11 @@ function makeTables() {
     ];
     /* ======================= settings end ======================= */
 
-    const numberTableBodyRows = parseInt(
-        Math.round((end_at - start_at) / step_size + 1)
-    );
+    const numberTableBodyRows = parseInt(Math.round((end_at - start_at) / step_size + 1));
+
     let firstColumnValues = new Array(numberTableBodyRows);
 
-    let tableBodyValues = new Array(
-        numberTableBodyRows
-    ); /* , columnTitles.length - 1, legend.length); */
+    let tableBodyValues = new Array(numberTableBodyRows); /* , columnTitles.length - 1, legend.length); */
     for (let i = 0; i < numberTableBodyRows; i++) {
         tableBodyValues[i] = new Array(columnTitles.length);
     }
@@ -143,11 +140,9 @@ function makeTables() {
                 break;
         }
 
-        squareCubeLawWeight =
-            referenceWeight * Math.pow(length / length_reference, 3);
+        squareCubeLawWeight = referenceWeight * Math.pow(length / length_reference, 3);
         allometricEffectAbsolute = allometricWeight - squareCubeLawWeight;
-        allometricEffectRelative =
-            (allometricEffectAbsolute / squareCubeLawWeight) * 100;
+        allometricEffectRelative = (allometricEffectAbsolute / squareCubeLawWeight) * 100;
 
         return [
             allometricWeight,

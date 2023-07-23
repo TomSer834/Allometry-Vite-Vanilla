@@ -72,8 +72,8 @@ export const PageShark = () => {
                 <hr>
 
                 <div class="inputFieldBottom">
-                   <label for="element_7">
-                        <input id="element_7" class="button" type="submit" value="Calculate" name="Calculate">
+                   <label for="element_8">
+                        <input id="element_8" class="button" type="submit" value="Calculate" name="Calculate">
                    </label>
                 </div>
            </form>
@@ -144,50 +144,50 @@ const makeDataTable = () => {
     let length_reference_meters = 0;
     const _element_1 = document.getElementById("element_1");
     if (_element_1) {
-        const element_1 = _element_1;
-        length_reference_meters = parseFloat(element_1.innerText);
+        const element_1 = _element_1 as HTMLInputElement;
+        length_reference_meters = parseFloat(element_1.value);
     } else { console.log("Input element 1 does not exist!"); }
 
     let length_reference_centimeters = 0;
     const _element_2 = document.getElementById("element_2");
     if (_element_2) {
-        const element_2 = _element_2;
-        length_reference_meters = parseFloat(element_2.innerText);
+        const element_2 = _element_2 as HTMLInputElement;
+        length_reference_centimeters = parseFloat(element_2.value);
     } else { console.log("Input element 2 does not exist!"); }
 
     let start_at_meters = 0;
     const _element_3 = document.getElementById("element_3");
     if (_element_3) {
-        const element_3 = _element_3;
-        length_reference_meters = parseFloat(element_3.innerText);
+        const element_3 = _element_3 as HTMLInputElement;
+        start_at_meters = parseFloat(element_3.value);
     } else { console.log("Input element 3 does not exist!"); }
 
     let start_at_centimeters = 0;
     const _element_4 = document.getElementById("element_4");
     if (_element_4) {
-        const element_4 = _element_4;
-        length_reference_meters = parseFloat(element_4.innerText);
+        const element_4 = _element_4 as HTMLInputElement;
+        start_at_centimeters = parseFloat(element_4.value);
     } else { console.log("Input element 4 does not exist!"); }
 
     let end_at_meters = 0;
     const _element_5 = document.getElementById("element_5");
     if (_element_5) {
-        const element_5 = _element_5;
-        length_reference_meters = parseFloat(element_5.innerText);
+        const element_5 = _element_5 as HTMLInputElement;
+        end_at_meters = parseFloat(element_5.value);
     } else { console.log("Input element 5 does not exist!"); }
 
     let end_at_centimeters = 0;
     const _element_6 = document.getElementById("element_6");
     if (_element_6) {
-        const element_6 = _element_6;
-        length_reference_meters = parseFloat(element_6.innerText);
+        const element_6 = _element_6 as HTMLInputElement;
+        end_at_centimeters = parseFloat(element_6.value);
     } else { console.log("Input element 6 does not exist!"); }
 
     let step_size_centimeters = 0;
     const _element_7 = document.getElementById("element_7");
     if (_element_7) {
-        const element_7 = _element_7;
-        length_reference_meters = parseFloat(element_7.innerText);
+        const element_7 = _element_7 as HTMLInputElement;
+        step_size_centimeters = parseFloat(element_7.value);
     } else { console.log("Input element 7 does not exist!"); }
 
 
@@ -196,11 +196,9 @@ const makeDataTable = () => {
     let   end_at = end_at_meters + end_at_centimeters / 100;
     const step_size = step_size_centimeters / 100;
 
+
     if (start_at > end_at) end_at = start_at;
 
 
-
-
     return dataTable(start_at, end_at, step_size, length_reference);
-
 }
