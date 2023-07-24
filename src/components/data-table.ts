@@ -4,7 +4,6 @@ import { columnColors } from "../data/settings.ts";
 import { units } from "../data/settings.ts";
 import { addPlus } from "../data/settings.ts";
 import { roundToDigits } from "../data/settings.ts";
-
 import { legend } from "../data/settings.ts";
 
 import { calculateCell } from "./calculations.ts";
@@ -28,7 +27,7 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         }
     }
 
-    let tableBodyTeamsCellHtml = new Array(numberTableBodyRows -1);
+    let tableBodyTeamsCellHtml = new Array(numberTableBodyRows - 1);
     for (let i = 0; i < numberTableBodyRows; i++) {
         tableBodyTeamsCellHtml[i] = new Array(columnTitles.length - 2);
     }
@@ -45,7 +44,9 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     tableHeadHtml += "<tr>"
 
     for (let i = 0; i < columnTitles.length; i++) {
-        tableHeadHtml += "<td style='background-color: #" + columnTitleColors[i] + ";'>" + columnTitles[i] + "</td>";
+
+        tableHeadHtml += "<td class='data-titles' style='background-color: #" +
+            columnTitleColors[i] + ";'>" + columnTitles[i] + "</td>";
     }
 
     tableHeadHtml += "</tr>";
@@ -55,15 +56,15 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     /* ======================================= table body first column ======================================= */
 
     /* =============== calculation =============== */
-    for (let i = 0; i < columnTitles.length - 2; i++) {
+    for (let i = 0; i < numberTableBodyRows; i++) {
 
         firstColumnValues[i] = startAt + i * stepSize;
     }
 
     /* =============== cell html =============== */
-    for (let i = 0; i < columnTitles.length - 2; i++) {
+    for (let i = 0; i < numberTableBodyRows; i++) {
         firstColumnCellHtml[i] = "";
-        firstColumnCellHtml[i] += "<td>";
+        firstColumnCellHtml[i] += "<td style='background-color: #" + columnTitleColors[0] + ";'>";
         firstColumnCellHtml[i] += firstColumnValues[i];
         firstColumnCellHtml[i] += "</td>";
     }
@@ -86,7 +87,6 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
             }
         }
     }
-
 
     /* ===== table body teams cell html ===== */
 
@@ -119,8 +119,61 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
                 tableBodyTeamsCellHtml[i][j] += "<br>";
             }
+
             tableBodyTeamsCellHtml[i][j] += "</td>";
         }
+    }
+
+    /* ======================================= table body average ======================================= */
+
+    /* =============== calculation average =============== */
+
+    let average = new Array(numberTableBodyRows);
+    for (let i = 0; i < numberTableBodyRows; i++) {
+        average[i] = new Array(columnTitles.length - 2);
+    }
+
+    let addToAverage = 0;
+
+    for (let i = 0; i < numberTableBodyRows; i++) {
+
+        for (let k = 0; k < legend.length; k++) {
+
+            addToAverage = 0;
+
+            for (let j = 0; j < columnTitles.length - 2; j++) {
+
+                addToAverage += tableBodyValues[i][j][k];
+            }
+
+            average[i][k] = addToAverage / (columnTitles.length - 2);
+        }
+    }
+
+    /* ===== cell html average ===== */
+
+    let averageHtml = new Array(numberTableBodyRows);
+
+    for (let i = 0; i < numberTableBodyRows; i++) {
+
+        averageHtml[i] = "<td style='background-color: #" + columnTitleColors[columnTitles.length - 1] + ";'>";
+
+        for (let k = 0; k < legend.length; k++) {
+
+            averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
+            averageHtml[i] += "&nbsp;";
+            averageHtml[i] += units[k];
+            if (k < legend.length - 1) averageHtml[i] += "<br>";
+
+            let unitlength = Number(units[k].length);
+            if (unitSpaceMax > unitlength) {
+                for (let m = unitlength; m < unitSpaceMax; m++) {
+                    averageHtml[i] += "&nbsp";
+                }
+            }
+        }
+
+        averageHtml[i] += "</td>";
     }
 
     /* ======================================= whole table ======================================= */
@@ -139,28 +192,29 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         tableHtml += "<tr>";
         tableHtml += firstColumnCellHtml[i];
 
-
-        /* from second to forelast column */
-/*         for (let j = 0; j < columnTitles.length - 2; i++) {
-
-            tableHtml += tableBodyTeamsCellHtml[i][j];
-
-        } */
-
+        /* teams' calculations */
         for (let j = 0; j < columnTitles.length - 2; j++) {
 
             tableHtml += tableBodyTeamsCellHtml[i][j];
-console.log(i, j, tableBodyValues[i][j]);
         }
 
+        /* average */
+        tableHtml += averageHtml[i];
     }
 
     tableHtml += "</tr>";
-
     tableHtml += "</tbody";
     tableHtml += "</table>";
 
-    /* console.log(tableHtml); */
+    console.log("numberTableBodyRows = ",numberTableBodyRows);
+    console.log("averageHtml.length = ",averageHtml.length);
+    console.log(" = ",);
+    console.log(" = ",);
+    console.log(" = ",);
+    console.log(" = ",);
+    console.log(" = ",);
+    console.log(" = ",);
+
 
     return tableHtml;
 };

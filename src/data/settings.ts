@@ -1,14 +1,14 @@
  /* data table columns settings */
 
 export const columnTitles = [
-    "Length [m]",
+    "Length [m]<br>&nbsp;",
     "MacClain et al.",
     "Gottfried et al.",
     "Kohler et al.",
     "Tricas & McCosker",
     "Mollet & Cailliet",
     "Casey & Pratt",
-    "Average",
+    "Average<br>&nbsp;",
 ];
 
 export const columnTitleColors = [

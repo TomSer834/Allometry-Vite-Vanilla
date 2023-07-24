@@ -1,4 +1,4 @@
-import text from "../data/legend-table.json";
+import { legend } from "../data/settings.ts";
 
 
 export const legendTable = () => {
@@ -10,13 +10,13 @@ export const legendTable = () => {
 
     let index: bigint = 0n;
 
-    for (const rowText of text) {
+    for (const rowText of legend) {
 
         index++;
 
         tableHtml += "<tr>" +
                         "<td>" + index + ". Cell entry:</td>" +
-                        "<td>" + rowText.description + "</td>" +
+                        "<td>" + rowText + "</td>" +
                     "</tr>";
     }
 

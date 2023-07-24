@@ -6,7 +6,6 @@ import { dataTable } from "../components/data-table.ts";
 export const PageShark = () => {
     return /*html*/`
 
-<div class="background">
 <div class="page-pageShark">
 <header class="header-substitute" >
         <h6>Carcharodon carcharias</h6>
@@ -22,7 +21,7 @@ export const PageShark = () => {
                 <label for="element_1">
                     <span>length: &nbsp&nbsp</span>
                     <input id="element_1" class="inputElements inputElement-1" name="length_ref_in_meters"
-                       type="number" min="1" max="7" step="1" value="3">
+                       type="number" min="1" max="7" step="1" value="2">
                     <span>m&nbsp;</span>
                 </label>
 
@@ -52,7 +51,7 @@ export const PageShark = () => {
                 <label for="element_5">
                     <span>end at: &nbsp;&nbsp;</span>
                    <input id="element_5" class="inputElements" name="end_at_in_meters"
-                       style="width: 4rem; text-align: right;" type="number" min="1" max="20" step="1" value="4">
+                       style="width: 4rem; text-align: right;" type="number" min="1" max="20" step="1" value="3">
                    <span>m&nbsp;</span>
                 </label>
 
@@ -90,7 +89,6 @@ export const PageShark = () => {
 </div>
 
 </div>
-</div>
 
 `;
 }
@@ -116,9 +114,6 @@ export const attachEvents = () => {
                 console.log("Starter is null!");
             }
 
-            /* ======================================================================================================== */
-
-
 
             const _Table_2 = document.getElementById("data-div");
             if (_Table_2) {
@@ -128,9 +123,8 @@ export const attachEvents = () => {
             } else {
                 console.log("Starter is null!");
             }
-
-
         })
+
     } else {
         console.log("Starter is null!");
     }
