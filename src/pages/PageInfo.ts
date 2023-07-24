@@ -1,6 +1,3 @@
-import '../styles/shark.scss';
-import '../styles/main.scss';
-
 
 export const PageInfo = () => {
   return /*html*/ `

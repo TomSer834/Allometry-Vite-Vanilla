@@ -12,7 +12,7 @@ import { calculateCell } from "./calculations.ts";
 export const dataTable = (startAt: number, endAt: number, stepSize: number, lengthReference: number) => {
 
 
-    const numberTableBodyRows = (endAt - startAt) / stepSize + 1;
+    const numberTableBodyRows = Math.abs((endAt - startAt) / stepSize + 1);
 
     const firstColumnValues = new Array(numberTableBodyRows);
     const firstColumnCellHtml = new Array(numberTableBodyRows);
@@ -205,16 +205,6 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     tableHtml += "</tr>";
     tableHtml += "</tbody";
     tableHtml += "</table>";
-
-    console.log("numberTableBodyRows = ",numberTableBodyRows);
-    console.log("averageHtml.length = ",averageHtml.length);
-    console.log(" = ",);
-    console.log(" = ",);
-    console.log(" = ",);
-    console.log(" = ",);
-    console.log(" = ",);
-    console.log(" = ",);
-
 
     return tableHtml;
 };

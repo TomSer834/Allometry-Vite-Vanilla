@@ -1,11 +1,14 @@
 body {
+	
+	background-color: #041731;
 	.page-pageShark {
-		background-image: url("./images/S-03.jpg");
+
+		background-image: url("/src/styles/images/S-03.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
 		font-family: Monospace;
 		min-width: 34rem;
-		height: 100vh;
+		height: 92vh;
 
 		.header-substitute {
 			height: 3.5rem;
