@@ -19,7 +19,7 @@ export const columnTitleColors = [
     "333333",
     "333333",
     "333333",
-    "111111",
+    "111111"
 ];
 
 export const columnColors = [
@@ -30,7 +30,7 @@ export const columnColors = [
     "003842",
     "002060",
     "400540",
-    "111111",
+    "111111"
 ];
 
 
@@ -49,5 +49,5 @@ export const legend = [
     "Weight calculated using the authors' equations",
     "Weight calculated using the square-cube law, based on the reference",
     "Difference (1) minus (2) = allometric effect",
-    "Allometric addition to (2)",
+    "Allometric addition to (2)"
 ];
