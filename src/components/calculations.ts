@@ -36,7 +36,9 @@ export function calculateCell(team: string, length: number, length_reference: nu
 
     squareCubeLawWeight = referenceWeight * Math.pow(length / length_reference, 3);
     allometricEffectAbsolute = allometricWeight - squareCubeLawWeight;
-    allometricEffectRelative = (allometricEffectAbsolute / squareCubeLawWeight) * 100;
+    if(squareCubeLawWeight) {
+        allometricEffectRelative = (allometricEffectAbsolute / squareCubeLawWeight) * 100;
+    }
 
     return [
         allometricWeight,

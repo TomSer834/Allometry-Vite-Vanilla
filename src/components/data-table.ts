@@ -11,10 +11,9 @@ import { calculateCell } from "./calculations.ts";
 
 export const dataTable = (startAt: number, endAt: number, stepSize: number, lengthReference: number) => {
 
+    const numberTableBodyRows = Math.floor(Math.abs((endAt - startAt) / stepSize) + 1);
 
-    const numberTableBodyRows = Math.abs((endAt - startAt) / stepSize + 1);
-
-    const firstColumnValues = new Array(numberTableBodyRows);
+    const firstColumnValues = new Array(numberTableBodyRows + 10);
     const firstColumnCellHtml = new Array(numberTableBodyRows);
 
     let tableBodyValues = new Array(numberTableBodyRows);
@@ -64,8 +63,8 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     /* =============== cell html =============== */
     for (let i = 0; i < numberTableBodyRows; i++) {
         firstColumnCellHtml[i] = "";
-        firstColumnCellHtml[i] += "<td style='background-color: #" + columnTitleColors[0] + ";'>";
-        firstColumnCellHtml[i] += firstColumnValues[i];
+        firstColumnCellHtml[i] += "<td style='background-color: #" + columnTitleColors[0] + "; text-align: center;'>";
+        firstColumnCellHtml[i] += firstColumnValues[i].toFixed(2);
         firstColumnCellHtml[i] += "</td>";
     }
 
@@ -95,18 +94,32 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         if (units[i].length > unitSpaceMax) unitSpaceMax = units[i].length;
     }
 
+    while (legend.length > units.length) units.push("");
+
+    while (legend.length > roundToDigits.length) roundToDigits.push(0);
+
+
     for (let i = 0; i < numberTableBodyRows; i++) {
 
         for (let j = 0; j < columnTitles.length - 2; j++) {
 
             tableBodyTeamsCellHtml[i][j] = "";
-
-            tableBodyTeamsCellHtml[i][j] += "<td style='background-color: #" + columnColors[j + 1] + ";'>";
+            tableBodyTeamsCellHtml[i][j] += "<td style='background-color: #" + columnColors[j + 1] + "; white-space: nowrap;'>";
 
             for (let k = 0; k < legend.length; k++) {
-                if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
 
-                tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
+                if (tableBodyValues[i][j][0] && typeof tableBodyValues[i][j][k] === "number") {
+
+                    if (tableBodyValues[i][j][k].toFixed(roundToDigits[k]) != 0) {
+
+                        if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
+
+                        tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
+
+                    } else tableBodyTeamsCellHtml[i][j] += Math.abs(tableBodyValues[i][j][k]).toFixed(roundToDigits[k]);
+
+                } else tableBodyTeamsCellHtml[i][j] += "---";
+
                 tableBodyTeamsCellHtml[i][j] += "&nbsp";
                 tableBodyTeamsCellHtml[i][j] += units[k];
 
@@ -133,6 +146,12 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         average[i] = new Array(columnTitles.length - 2);
     }
 
+    let zeroCounter = 0;
+    for (let j = 0; j < columnTitles.length - 2; j++) {
+
+        if (tableBodyValues[0][j][0] == 0) zeroCounter++;
+    }
+
     let addToAverage = 0;
 
     for (let i = 0; i < numberTableBodyRows; i++) {
@@ -146,9 +165,10 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
                 addToAverage += tableBodyValues[i][j][k];
             }
 
-            average[i][k] = addToAverage / (columnTitles.length - 2);
+            average[i][k] = addToAverage / (columnTitles.length - 2 - zeroCounter);
         }
     }
+
 
     /* ===== cell html average ===== */
 
@@ -158,19 +178,27 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
         averageHtml[i] = "<td style='background-color: #" + columnTitleColors[columnTitles.length - 1] + ";'>";
 
-        for (let k = 0; k < legend.length; k++) {
+        for (let k = 0; k < legend.length; k++) {          
+            
+            if (!isNaN(average[i][k])) {
+                
+                averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
 
-            averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
+            } else averageHtml[i] += "---";
+
+
             averageHtml[i] += "&nbsp;";
             averageHtml[i] += units[k];
-            if (k < legend.length - 1) averageHtml[i] += "<br>";
 
             let unitlength = Number(units[k].length);
             if (unitSpaceMax > unitlength) {
+
                 for (let m = unitlength; m < unitSpaceMax; m++) {
-                    averageHtml[i] += "&nbsp";
+                    averageHtml[i] += "&nbsp;";
                 }
             }
+
+            if (k < legend.length - 1) averageHtml[i] += "<br>";
         }
 
         averageHtml[i] += "</td>";
