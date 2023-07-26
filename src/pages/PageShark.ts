@@ -14,9 +14,9 @@ export const PageShark = () => {
 
     <div class="sharks">
         <div></div>
-        <div class="sh-left"><img src="/src/styles/images/shark-left-3c.png"></div>
+        <div class="sh-left"><img src="/public/shark-left-3c.png"></div>
         <div></div>
-        <div class="sh-right"><img src="/src/styles/images/shark-right.png"></div>
+        <div class="sh-right"><img src="/public/shark-right.png"></div>
     </div>
 
     <div class="main-substitute">
