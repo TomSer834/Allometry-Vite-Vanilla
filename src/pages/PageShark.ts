@@ -12,6 +12,13 @@ export const PageShark = () => {
         <h6>Carcharodon carcharias</h6>
     </header>
 
+    <div class="sharks">
+        <div></div>
+        <div class="sh-left"><img src="/src/styles/images/shark-left-3c.png"></div>
+        <div></div>
+        <div class="sh-right"><img src="/src/styles/images/shark-right.png"></div>
+    </div>
+
     <div class="main-substitute">
      <div class="inputField">
 
@@ -84,6 +91,8 @@ export const PageShark = () => {
     </div>
 
 
+
+
     <div id="container">
 
         <div id="legend-div"></div>
@@ -91,6 +100,8 @@ export const PageShark = () => {
         <div id="data-div"></div>
 
     </div>
+
+
 
 </div>
 

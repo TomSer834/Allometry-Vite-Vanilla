@@ -108,7 +108,7 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
             for (let k = 0; k < legend.length; k++) {
 
-                if (tableBodyValues[i][j][0] && typeof tableBodyValues[i][j][k] === "number") {
+                if (tableBodyValues[i][j][0] && !isNaN(tableBodyValues[i][j][k])) {
 
                     if (tableBodyValues[i][j][k].toFixed(roundToDigits[k]) != 0) {
 
@@ -170,6 +170,14 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     }
 
 
+
+
+
+
+
+
+
+
     /* ===== cell html average ===== */
 
     let averageHtml = new Array(numberTableBodyRows);
@@ -182,9 +190,33 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
             
             if (!isNaN(average[i][k])) {
                 
+                if (addPlus[k] && average[i][k] > 0) averageHtml[i] += "+";
+
                 averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
 
             } else averageHtml[i] += "---";
+
+
+
+
+
+
+            /* if (tableBodyValues[i][j][0] && typeof tableBodyValues[i][j][k] === "number") {
+
+                if (tableBodyValues[i][j][k].toFixed(roundToDigits[k]) != 0) {
+        
+                    if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
+        
+                    tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
+        
+                } else tableBodyTeamsCellHtml[i][j] += Math.abs(tableBodyValues[i][j][k]).toFixed(roundToDigits[k]);
+        
+            } else tableBodyTeamsCellHtml[i][j] += "---"; */
+
+
+
+
+
 
 
             averageHtml[i] += "&nbsp;";
