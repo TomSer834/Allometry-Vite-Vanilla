@@ -79,7 +79,7 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         firstColumnCellHtml[i] += firstColumnValues[i].toFixed(2);
         firstColumnCellHtml[i] += "</td>";
     }
-    
+
 
     /* ======================================= table body teams ======================================= */
 
@@ -113,13 +113,17 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
                 if (!isNaN(tableBodyValues[i][j][k]) && (tableBodyValues[i][j][0] != 0)) {
 
-                    if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
+                    if (addPlus[k] && tableBodyValues[i][j][k].toFixed(roundToDigits[0]) > 0) tableBodyTeamsCellHtml[i][j] += "+";
 
                     if (k === 2) {
+
                         tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][0].toFixed(roundToDigits[0]) - tableBodyValues[i][j][1].toFixed(roundToDigits[1]);
-                    } else {
+
+                    } else if (tableBodyValues[i][j][k].toFixed(roundToDigits[0]) != 0) {
+
                         tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
-                    }
+
+                    } else tableBodyTeamsCellHtml[i][j] += 0;
 
                 } else tableBodyTeamsCellHtml[i][j] += "---";
 
