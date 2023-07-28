@@ -74,7 +74,7 @@ export const PageShark = () => {
                    <label for="element_7">
                        <span>step size:</span>
                        <input id="element_7" class="inputElements inputElement-7" name="step_size_in_centimeters"
-                           type="number" min="10" max="200" step="10" value="10">
+                           type="number" min="10" max="200" step="10" value="50">
                       <span>cm</span>
                    </label>
 
