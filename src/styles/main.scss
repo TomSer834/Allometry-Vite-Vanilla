@@ -12,7 +12,12 @@ body {
   background-color: #303030;
   color: #ccc;
   font-family: sans-serif;
-  font-size: .95rem;
+  font-size: 0.95rem;
+
+  .thin-line {
+    height: 1px;
+    background-color: #474f69;
+  }
 
   h1 {
     color: rgb(144, 170, 173);
@@ -75,9 +80,4 @@ body {
       }
     }
   }
-}
-
-.thin-line {
-  height: 1px;
-  background-color: #474f69;
 }

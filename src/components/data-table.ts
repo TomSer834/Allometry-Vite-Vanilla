@@ -11,6 +11,8 @@ import { calculateCell } from "./calculations.ts";
 
 export const dataTable = (startAt: number, endAt: number, stepSize: number, lengthReference: number) => {
 
+    /* ======================================= variables ======================================= */
+
     const numberTableBodyRows = Math.floor(Math.abs((endAt - startAt) / stepSize) + 1);
 
     const firstColumnValues = new Array(numberTableBodyRows + 10);
@@ -32,6 +34,15 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
     }
 
     let dataSetSingleCell = new Array(legend.length);
+
+    let unitSpaceMax = 0;
+    for (let i = 0; i < units.length; i++) {
+        if (units[i].length > unitSpaceMax) unitSpaceMax = units[i].length;
+    }
+
+    while (legend.length > units.length) units.push("");
+
+    while (legend.length > roundToDigits.length) roundToDigits.push(0);
 
     let tableHtml = "";
     let tableHeadHtml = "";
@@ -89,16 +100,6 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
     /* ===== table body teams cell html ===== */
 
-    let unitSpaceMax = 0;
-    for (let i = 0; i < units.length; i++) {
-        if (units[i].length > unitSpaceMax) unitSpaceMax = units[i].length;
-    }
-
-    while (legend.length > units.length) units.push("");
-
-    while (legend.length > roundToDigits.length) roundToDigits.push(0);
-
-
     for (let i = 0; i < numberTableBodyRows; i++) {
 
         for (let j = 0; j < columnTitles.length - 2; j++) {
@@ -108,25 +109,25 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
             for (let k = 0; k < legend.length; k++) {
 
-                if (tableBodyValues[i][j][0] && !isNaN(tableBodyValues[i][j][k])) {
+                if (!isNaN(tableBodyValues[i][j][k]) && (tableBodyValues[i][j][0] != 0)) {
 
-                    if (tableBodyValues[i][j][k].toFixed(roundToDigits[k]) != 0) {
+                    if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
 
-                        if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
-
+                    if (k === 2) {
+                        tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][0].toFixed(roundToDigits[0]) - tableBodyValues[i][j][1].toFixed(roundToDigits[1]);
+                    } else {
                         tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
-
-                    } else tableBodyTeamsCellHtml[i][j] += Math.abs(tableBodyValues[i][j][k]).toFixed(roundToDigits[k]);
+                    }
 
                 } else tableBodyTeamsCellHtml[i][j] += "---";
 
-                tableBodyTeamsCellHtml[i][j] += "&nbsp";
+                tableBodyTeamsCellHtml[i][j] += "&nbsp;";
                 tableBodyTeamsCellHtml[i][j] += units[k];
 
                 let unitlength = Number(units[k].length);
                 if (unitSpaceMax > unitlength) {
                     for (let m = unitlength; m < unitSpaceMax; m++) {
-                        tableBodyTeamsCellHtml[i][j] += "&nbsp";
+                        tableBodyTeamsCellHtml[i][j] += "&nbsp;";
                     }
                 }
 
@@ -169,15 +170,6 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         }
     }
 
-
-
-
-
-
-
-
-
-
     /* ===== cell html average ===== */
 
     let averageHtml = new Array(numberTableBodyRows);
@@ -186,38 +178,29 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
         averageHtml[i] = "<td style='background-color: #" + columnTitleColors[columnTitles.length - 1] + ";'>";
 
-        for (let k = 0; k < legend.length; k++) {          
-            
-            if (!isNaN(average[i][k])) {
-                
-                if (addPlus[k] && average[i][k] > 0) averageHtml[i] += "+";
+        for (let k = 0; k < legend.length; k++) {
 
-                averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
+            if (!isNaN(average[i][k])) {
+
+                if (addPlus[k]) {
+
+                    if (k === 2) {
+
+                        if (average[i][0].toFixed(roundToDigits[0]) - average[i][1].toFixed(roundToDigits[1]) > 0) averageHtml[i] += "+";
+
+                    } else {
+
+                        if (average[i][k].toFixed(roundToDigits[k]) > 0) averageHtml[i] += "+";
+                    }
+                }
+
+                if (k === 2) {
+                    averageHtml[i] += average[i][0].toFixed(roundToDigits[0]) - average[i][1].toFixed(roundToDigits[1]);
+                } else {
+                    averageHtml[i] += average[i][k].toFixed(roundToDigits[k]);
+                }
 
             } else averageHtml[i] += "---";
-
-
-
-
-
-
-            /* if (tableBodyValues[i][j][0] && typeof tableBodyValues[i][j][k] === "number") {
-
-                if (tableBodyValues[i][j][k].toFixed(roundToDigits[k]) != 0) {
-        
-                    if (addPlus[k] && tableBodyValues[i][j][k] > 0) tableBodyTeamsCellHtml[i][j] += "+";
-        
-                    tableBodyTeamsCellHtml[i][j] += tableBodyValues[i][j][k].toFixed(roundToDigits[k]);
-        
-                } else tableBodyTeamsCellHtml[i][j] += Math.abs(tableBodyValues[i][j][k]).toFixed(roundToDigits[k]);
-        
-            } else tableBodyTeamsCellHtml[i][j] += "---"; */
-
-
-
-
-
-
 
             averageHtml[i] += "&nbsp;";
             averageHtml[i] += units[k];
