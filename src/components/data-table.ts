@@ -14,7 +14,7 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
 
     /* ======================================= variables ======================================= */
 
-    const numberTableBodyRows = Math.floor(Math.abs((endAt - startAt) / stepSize) + 1);
+    const numberTableBodyRows = Math.floor(Math.abs((endAt - startAt) / stepSize) + 1 + 0.001);
 
     const firstColumnValues = new Array(numberTableBodyRows);
     const firstColumnCellHtml = new Array(numberTableBodyRows);
