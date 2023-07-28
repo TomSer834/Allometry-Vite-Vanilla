@@ -31,13 +31,13 @@ export const PageShark = () => {
                    <label for="element_1">
                       <span>length: &nbsp&nbsp</span>
                         <input id="element_1" class="inputElements inputElement-1" name="length_ref_in_meters"
-                           type="number" min="1" max="7" step="1" value="1">
+                           type="number" min="1" max="7" step="1" value="3">
                         <span>m&nbsp;</span>
                     </label>
 
                     <label for="element_2">
                         <input id="element_2" class="inputElements" name="length_ref_in_centimeters" type="number"
-                            min="0" max="95" step="5" value="85">
+                            min="0" max="90" step="10" value="50">
                         <span>cm</span>
                     </label>
 
@@ -48,33 +48,33 @@ export const PageShark = () => {
                     <label for="element_3">
                         <span>start at:&nbsp;</span>
                         <input id="element_3" class="inputElements inputElement-3" name="start_at_in_meters"
-                            type="number" min="1" max="7" step="1" value="1">
+                            type="number" min="1" max="7" step="1" value="3">
                         <span>m&nbsp;</span>
                     </label>
 
                     <label for="element_4">
                         <input id="element_4" class="inputElements" name="start_in_centimeters"
-                            style="width: 4rem; text-align: right;" type="number" min="0" max="90" step="10" value="80">
+                            style="width: 4rem; text-align: right;" type="number" min="0" max="90" step="10" value="50">
                         <span>cm</span>
                     </label>
 
                     <label for="element_5">
                         <span>end at: &nbsp;&nbsp;</span>
                     <input id="element_5" class="inputElements" name="end_at_in_meters"
-                           style="width: 4rem; text-align: right;" type="number" min="1" max="20" step="1" value="2">
+                           style="width: 4rem; text-align: right;" type="number" min="1" max="20" step="1" value="4">
                        <span>m&nbsp;</span>
                     </label>
 
                     <label for="element_6">
                       <input id="element_6" class="inputElements" name="end_at_in_centimeters"
-                          style="width: 4rem; text-align: right;" type="number" min="0" max="90" step="10" value="20">
+                          style="width: 4rem; text-align: right;" type="number" min="0" max="90" step="10" value="50">
                       <span>cm</span>
                    </label>
 
                    <label for="element_7">
                        <span>step size:</span>
                        <input id="element_7" class="inputElements inputElement-7" name="step_size_in_centimeters"
-                           type="number" min="1" max="200" step="1" value="1">
+                           type="number" min="10" max="200" step="10" value="50">
                       <span>cm</span>
                    </label>
 
@@ -122,7 +122,7 @@ export const attachEvents = () => {
                 Table_1.innerHTML = legendTable();
 
             } else {
-                console.log("Starter is null!");
+                console.log("Div for legend table does not exist!");
             }
 
             /* make data table */
@@ -132,7 +132,7 @@ export const attachEvents = () => {
                 Table_2.innerHTML = makeDataTable();
 
             } else {
-                console.log("Starter is null!");
+                console.log("Div for data table does not exist!");
             }
         })
 

@@ -11,11 +11,12 @@ import { calculateCell } from "./calculations.ts";
 
 export const dataTable = (startAt: number, endAt: number, stepSize: number, lengthReference: number) => {
 
+
     /* ======================================= variables ======================================= */
 
     const numberTableBodyRows = Math.floor(Math.abs((endAt - startAt) / stepSize) + 1);
 
-    const firstColumnValues = new Array(numberTableBodyRows + 10);
+    const firstColumnValues = new Array(numberTableBodyRows);
     const firstColumnCellHtml = new Array(numberTableBodyRows);
 
     let tableBodyValues = new Array(numberTableBodyRows);
@@ -78,6 +79,7 @@ export const dataTable = (startAt: number, endAt: number, stepSize: number, leng
         firstColumnCellHtml[i] += firstColumnValues[i].toFixed(2);
         firstColumnCellHtml[i] += "</td>";
     }
+    
 
     /* ======================================= table body teams ======================================= */
 
